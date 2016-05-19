@@ -127,6 +127,9 @@ else {
   print ("Se esperaba un Identificador")
 }
 }
+else {
+  print ("Se esperaba llave der")
+}
 }
 
 func Variable_Declaration() -> Bool {
