@@ -162,3 +162,4 @@ func Variable_Declaration() -> Bool {
 }
 
 var synal = Syntax(TOKENS)
+synal.Constant_Declaration()
