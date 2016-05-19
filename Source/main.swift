@@ -92,6 +92,10 @@ let tokens: [String]
 	}
   func Get_Next_Token(){
 		currentToken++
+		
+		if currentToken == self.tokens.count {
+			currentToken++
+		}
 	}
   func Constant_Declaration() {
   if tokens[currentToken] == "Identificador" {
