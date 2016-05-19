@@ -1,0 +1,5 @@
+version: "Swift version 2.2-dev (LLVM 3ebdbb2c7e, Clang f66c5bb67b, Swift 42591f7cba)"
+options: "5db5a8a405a99645df8a9f1f8327365c"
+build_time: [516853362, 896235000]
+inputs:
+  "/home/guillermo/Descargas/sintactico3/Source/main.swift": [516853360, 0]

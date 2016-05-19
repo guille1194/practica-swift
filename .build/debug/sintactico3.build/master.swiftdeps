@@ -1,0 +1,5 @@
+version: "Swift version 3.0-dev (LLVM b361b0fc05, Clang 11493b0f62, Swift fc261045a5)"
+options: "20004800e53975bb2d511a2cf6cce310"
+build_time: [516953316, 342381000]
+inputs:
+  "/home/guillermo/Descargas/sintactico3/Source/main.swift": [516953310, 0]

@@ -1,0 +1,11 @@
+{
+  "": {
+    "swift-dependencies": "/home/guillermo/Descargas/sintactico3/.build/debug/sintactico3.o/sintactico3/master.swiftdeps"
+  },
+  "/home/guillermo/Descargas/sintactico3/Source/main.swift": {
+    "dependencies": "/home/guillermo/Descargas/sintactico3/.build/debug/sintactico3.o/sintactico3/main.d",
+    "object": "/home/guillermo/Descargas/sintactico3/.build/debug/sintactico3.o/Source/main.swift.o",
+    "swiftmodule": "/home/guillermo/Descargas/sintactico3/.build/debug/sintactico3.o/sintactico3/main~partial.swiftmodule",
+    "swift-dependencies": "/home/guillermo/Descargas/sintactico3/.build/debug/sintactico3.o/sintactico3/main.swiftdeps"
+  }
+}

@@ -1,0 +1,29 @@
+client:
+  name: swift-build
+
+tools: {}
+
+targets:
+  "": [<sintactico3>]
+  sintactico3: [<sintactico3>]
+
+commands:
+  <sintactico3-swiftc>:
+    tool: swift-compiler
+    executable: "/home/guillermo/Descargas/swift-2.2-SNAPSHOT-2016-01-11-a-ubuntu15.10/usr/bin/swiftc"
+    inputs: ["/home/guillermo/Descargas/sintactico3/Source/main.swift"]
+    outputs: ["<sintactico3-swiftc>","/home/guillermo/Descargas/sintactico3/.build/debug/sintactico3.swiftmodule","/home/guillermo/Descargas/sintactico3/.build/debug/sintactico3.o/Source/main.swift.o"]
+    module-name: "sintactico3"
+    module-output-path: "/home/guillermo/Descargas/sintactico3/.build/debug/sintactico3.swiftmodule"
+    is-library: false
+    sources: ["/home/guillermo/Descargas/sintactico3/Source/main.swift"]
+    objects: ["/home/guillermo/Descargas/sintactico3/.build/debug/sintactico3.o/Source/main.swift.o"]
+    import-paths: ["/home/guillermo/Descargas/sintactico3/.build/debug"]
+    temps-path: "/home/guillermo/Descargas/sintactico3/.build/debug/sintactico3.o/sintactico3"
+    other-args: ["-j8","-Onone","-g","-I","/usr/local/include","-D","SWIFT_PACKAGE"]
+  <sintactico3>:
+    tool: shell
+    inputs: ["<sintactico3-swiftc>","/home/guillermo/Descargas/sintactico3/.build/debug/sintactico3.o/Source/main.swift.o"]
+    outputs: ["<sintactico3>","/home/guillermo/Descargas/sintactico3/.build/debug/sintactico3"]
+    args: ["/home/guillermo/Descargas/swift-2.2-SNAPSHOT-2016-01-11-a-ubuntu15.10/usr/bin/swiftc","-o","/home/guillermo/Descargas/sintactico3/.build/debug/sintactico3","/home/guillermo/Descargas/sintactico3/.build/debug/sintactico3.o/Source/main.swift.o","-g","-L/usr/local/lib"]
+    description: "Linking Executable:  .build/debug/sintactico3"
