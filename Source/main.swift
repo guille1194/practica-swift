@@ -94,7 +94,7 @@ let tokens: [String]
 		currentToken++
 		
 		if currentToken == self.tokens.count {
-			currentToken++
+			currentToken = 0
 		}
 	}
   func Constant_Declaration() {
