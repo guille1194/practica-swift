@@ -108,11 +108,11 @@ let tokens: [String]
            Get_Next_Token()
          }
          else {
-           print ("Se esperaba Identificador")
+           print ("Se esperaba digito")
          }
        }
        else {
-         print ("Se esperaba llavesizq")
+         print ("Se esperaba =")
        }
     }
     else {
@@ -120,15 +120,12 @@ let tokens: [String]
     }
   }
   else {
-    print ("Se esperaba =")
+    print ("Se esperaba llavesizq")
   }
 }
 else {
-  print ("Se esperaba un digito")
+  print ("Se esperaba un Identificador")
 }
-}
-else {
-  print ("Se esperaba llaveder")
 }
 }
 
