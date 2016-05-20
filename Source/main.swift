@@ -82,22 +82,64 @@ for indexL in 0..<countL {
     }
   }
 
-
 class Syntax {
-let tokens: [String]
-	var currentToken: Int
-	init (_ tokens:[String]) {
-		self.tokens = tokens
-		currentToken = 0
-	}
-  func Get_Next_Token(){
-		currentToken++
-		
-		if currentToken == self.tokens.count {
-			currentToken = 0
-		}
-	}
-  func Constant_Declaration() {
+  let tokens: [String]
+  	var currentToken: Int
+  	init (_ tokens:[String]) {
+  		self.tokens = tokens
+  		currentToken = 0
+  	}
+    func Get_Next_Token(){
+  		currentToken++
+  		if currentToken == self.tokens.count {
+  			currentToken = 0
+        print(currentToken)
+
+  		}
+  	}
+  func DeclararIprograma() {
+    if tokens[currentToken] == "IPrograma" {
+      Get_Next_Token()
+    }
+    else{
+      print("No se localiza el inicio del programa")
+    }
+  }
+  func DeclararFprograma(){
+    if tokens[currentToken] == "FPrograma" {
+      Get_Next_Token()
+    }
+    else{
+      print("No se localiza el fin del programa")
+    }
+  }
+  func Declararimp(){
+    if tokens[currentToken] == "impresion"{
+    Get_Next_Token()
+      if tokens[currentToken] == "parizq"{
+        Get_Next_Token()
+          if tokens[currentToken] == "Identificador"{
+            Get_Next_Token()
+              if tokens[currentToken] == "parder"{
+                Get_Next_Token()
+              }
+              else{
+                print("Se esperaba )")
+              }
+            }
+            else{
+              print ("Se esperaba un Identificador")
+            }
+          }
+          else{
+            print ("Se esperaba (")
+          }
+        }
+        else{
+          print ("Se esperaba la palabra display")
+        }
+      }
+  func Declaracion_Constante() {
   if tokens[currentToken] == "Identificador" {
     Get_Next_Token()
     if tokens[currentToken] == "llavesizq" {
@@ -112,58 +154,309 @@ let tokens: [String]
            Get_Next_Token()
          }
          else {
-           print ("Se esperaba digito")
+           print ("Se esperaba llave derecha")
          }
        }
        else {
-         print ("Se esperaba =")
+         print ("Se esperaba digito")
        }
     }
     else {
-      print ("Se esperaba un dato")
+      print ("Se esperaba un =")
     }
   }
   else {
-    print ("Se esperaba llavesizq")
+    print ("Se esperaba tipo de dato")
   }
 }
 else {
-  print ("Se esperaba un Identificador")
+  print ("Se esperaba un llave izquierda")
 }
 }
 else {
-  print ("Se esperaba llave der")
+  print ("Se esperaba Identificador")
 }
 }
 
-func Variable_Declaration() -> Bool {
-    if tokens[currentToken] == "Identificador" {
+func Declaracion_Variable() {
+    if tokens[currentToken] == "declaracion" {
         Get_Next_Token()
         if tokens[currentToken] == "parizq" {
             Get_Next_Token()
-            if tokens[currentToken] == "tipo_de_dato" {
+            if tokens[currentToken] == "Identificador" {
                 Get_Next_Token()
                 if tokens[currentToken] == "parder" {
+                  Get_Next_Token()
+                if tokens[currentToken] == "llamarvar" {
                     Get_Next_Token()
-                    return true
+                    if tokens[currentToken] == "tipo_de_dato" {
+                      Get_Next_Token()
                 }
                 else {
-                    return false
+                    print("Se esperaba un tipo de dato")
                 }
             }
             else {
-                return false
+                print("Se esperaba la llamada de la variable (:) ")
             }
         }
         else {
-            return false
+            print("Se esperaba parentesis derecho")
         }
     }
     else {
-        return false
+        print("Se esperaba Identificador")
     }
 }
+else {
+  print("Se esperaba parentesis izquierdo")
+}
+}
+else{
+  print("Se esperaba declaracion")
+}
+}
+func Declarar_Arreglo(){
+  if tokens[currentToken] == "arreglo"{
+    Get_Next_Token()
+      if tokens[currentToken] == "tipo_de_dato"{
+        Get_Next_Token()
+          if tokens[currentToken] == "Identificador"{
+            Get_Next_Token()
+              if tokens[currentToken] == "corchizq"{
+                Get_Next_Token()
+                  if tokens[currentToken] == "digito"{
+                    Get_Next_Token()
+                      if tokens[currentToken] == "corchder"{
+                        Get_Next_Token()
+                      }
+                      else {
+                        print ("Se esperaba un ]")
+                      }
+                    }
+                    else {
+                      print ("Se esperaba un digito")
+                    }
+                  }
+                  else{
+                    print ("Se esperaba [")
+                  }
+                }
+                else{
+                  print ("Se esperaba un Identificador")
+                }
+              }
+              else{
+                print ("Se esperaba un tipo de dato")
+              }
+            }
+            else{
+              print ("Se esperaba la palabra args")
+            }
+          }
+
+func OperMate(){
+  if tokens[currentToken] == "inimate"{
+    Get_Next_Token()
+    if tokens[currentToken] == "Identificador"{
+      Get_Next_Token()
+        if tokens[currentToken] == "op_ar"{
+          Get_Next_Token()
+            if tokens[currentToken] == "Identificador"{
+              Get_Next_Token()
+            }
+            else {
+              print ("Se esperaba Identificador")
+            }
+          }
+            else {
+              print ("Se esperaba un operador aritmetico")
+            }
+          }
+            else {
+              print ("Se esperaba un Identificador")
+            }
+          }
+            else {
+              print ("Se esperaba la palabra dm")
+            }
+          }
+
+ func DeclararPila(){
+      if tokens[currentToken] == "apilar"{
+        Get_Next_Token()
+        if tokens[currentToken] == "corchizq"{
+          Get_Next_Token()
+          if tokens[currentToken] == "Identificador"{
+            Get_Next_Token()
+            if tokens[currentToken] == "corchder"{
+              Get_Next_Token()
+                }
+                else {
+                  print ("Se esperaba un ]")
+                }
+              }
+              else {
+                print("Se esperaba un Identificador")
+              }
+            }
+            else{
+              print("Se esperaba [")
+            }
+          }
+          else{
+            print("Se esperaba la palabra reservada pileup")
+          }
+        }
+
+func consWrt(){
+    if tokens[currentToken] == "escribir"{
+      Get_Next_Token()
+      if tokens[currentToken] == "parizq"{
+        Get_Next_Token()
+        if tokens[currentToken] == "Identificador"{
+          Get_Next_Token()
+          if tokens[currentToken] == "parder"{
+            Get_Next_Token()
+            if tokens[currentToken] == "terminal"{
+              Get_Next_Token()
+            }
+            else {
+              print ("Se esperaba la palabra term")
+            }
+          }
+          else {
+            print ("Se esperaba un )")
+          }
+        }
+        else {
+          print ("Se esperaba un Identificador")
+        }
+      }
+      else {
+        print ("Se esperaba un (")
+      }
+    }
+    else {
+      print ("Se esperaba la palabra writein")
+    }
+  }
+
+  func consread(){
+      if tokens[currentToken] == "leer"{
+        Get_Next_Token()
+        if tokens[currentToken] == "parizq"{
+          Get_Next_Token()
+          if tokens[currentToken] == "Identificador"{
+            Get_Next_Token()
+            if tokens[currentToken] == "parder"{
+              Get_Next_Token()
+              if tokens[currentToken] == "terminal"{
+                Get_Next_Token()
+              }
+              else {
+                print ("Se esperaba la palabra term")
+              }
+            }
+            else {
+              print ("Se esperaba un )")
+            }
+          }
+          else {
+            print ("Se esperaba un Identificador")
+          }
+        }
+        else {
+          print ("Se esperaba un (")
+        }
+      }
+      else {
+        print ("Se esperaba la palabra readin")
+      }
+    }
+
+func DeclararTry(){
+  if tokens[currentToken] == "intento"{
+    Get_Next_Token()
+    if tokens[currentToken] == "llavesizq"{
+      Get_Next_Token()
+      if tokens[currentToken] == "llavesder"{
+        Get_Next_Token()
+      }
+      else{
+        print("Se esperaba }")
+      }
+    }
+      else{
+        print("Se esperaba {")
+      }
+    }
+      else{
+        print ("Se esperaba la palabra intento")
+      }
+}
+
+func DeclararCatch(){
+  if tokens[currentToken] == "capturar_excepcion" {
+    Get_Next_Token()
+      if tokens[currentToken] == "imperror"{
+        Get_Next_Token()
+          if tokens[currentToken] == "fin_excepcion"{
+            Get_Next_Token()
+          }
+          else{
+            print("Se esperaba la palabra pass")
+          }
+        }
+          else{
+            print("Se esperaba la palabra ImportError")
+          }
+        }
+          else{
+            print("Se esperaba la palabra except")
+          }
+        }
+
+
+func DeclararCola(){
+  if tokens[currentToken] == "colas"{
+    Get_Next_Token()
+    if tokens[currentToken] == "corchizq"{
+      Get_Next_Token()
+      if tokens[currentToken] == "Identificador"{
+        Get_Next_Token()
+          if tokens[currentToken] == "corchder"{
+            Get_Next_Token()
+          }
+          else {
+            print ("Se esperaba un ]")
+          }
+        }
+        else {
+          print("Se esperaba un Identificador")
+        }
+      }
+      else{
+        print("Se esperaba [")
+      }
+    }
+    else{
+      print("Se esperaba colas")
+    }
+  }
 }
 
 var synal = Syntax(TOKENS)
-synal.Constant_Declaration()
+synal.Declaracion_Constante()
+synal.Declaracion_Variable()
+synal.DeclararIprograma()
+synal.DeclararFprograma()
+synal.DeclararCola()
+synal.consread()
+synal.consWrt()
+synal.DeclararPila()
+synal.OperMate()
+synal.Declarar_Arreglo()
+synal.Declararimp()
+synal.DeclararTry()
+synal.DeclararCatch()
