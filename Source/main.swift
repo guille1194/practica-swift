@@ -505,7 +505,7 @@ func DeclararCola() -> Bool{
       }
     }
     else{
-      print("Se esperaba colas")
+      print("Se esperaba la palabra qv")
       return false
     }
   }
@@ -514,7 +514,6 @@ func DeclararCola() -> Bool{
 var synal = Syntax(TOKENS)
 synal.DeclararIprograma()
 synal.Declaracion_Constante()
-synal.DeclararFprograma()
 synal.Declaracion_Variable()
 synal.DeclararCola()
 synal.consread()
@@ -525,3 +524,4 @@ synal.Declarar_Arreglo()
 synal.Declararimp()
 synal.DeclararTry()
 synal.DeclararCatch()
+synal.DeclararFprograma()
