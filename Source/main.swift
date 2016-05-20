@@ -97,23 +97,27 @@ class Syntax {
 
   		}
   	}
-  func DeclararIprograma() {
+  func DeclararIprograma() -> Bool {
     if tokens[currentToken] == "IPrograma" {
       Get_Next_Token()
+      return true
     }
     else{
       print("No se localiza el inicio del programa")
+      return false
     }
   }
-  func DeclararFprograma(){
+  func DeclararFprograma() -> Bool{
     if tokens[currentToken] == "FPrograma" {
       Get_Next_Token()
+      return true
     }
     else{
       print("No se localiza el fin del programa")
+      return false
     }
   }
-  func Declararimp(){
+  func Declararimp() -> Bool{
     if tokens[currentToken] == "impresion"{
     Get_Next_Token()
       if tokens[currentToken] == "parizq"{
@@ -122,24 +126,29 @@ class Syntax {
             Get_Next_Token()
               if tokens[currentToken] == "parder"{
                 Get_Next_Token()
+                return true
               }
               else{
                 print("Se esperaba )")
+                return false
               }
             }
             else{
               print ("Se esperaba un Identificador")
+              return false
             }
           }
           else{
             print ("Se esperaba (")
+            return false
           }
         }
         else{
           print ("Se esperaba la palabra display")
+          return false
         }
       }
-  func Declaracion_Constante() {
+  func Declaracion_Constante() -> Bool {
   if tokens[currentToken] == "Identificador" {
     Get_Next_Token()
     if tokens[currentToken] == "llavesizq" {
@@ -152,33 +161,40 @@ class Syntax {
          Get_Next_Token()
          if tokens[currentToken] == "llavesder" {
            Get_Next_Token()
+           return true
          }
          else {
            print ("Se esperaba llave derecha")
+           return false
          }
        }
        else {
          print ("Se esperaba digito")
+         return false
        }
     }
     else {
       print ("Se esperaba un =")
+      return false
     }
   }
   else {
     print ("Se esperaba tipo de dato")
+    return false
   }
 }
 else {
   print ("Se esperaba un llave izquierda")
+  return false
 }
 }
 else {
   print ("Se esperaba Identificador")
+  return false
 }
 }
 
-func Declaracion_Variable() {
+func Declaracion_Variable() -> Bool{
     if tokens[currentToken] == "declaracion" {
         Get_Next_Token()
         if tokens[currentToken] == "parizq" {
@@ -191,32 +207,39 @@ func Declaracion_Variable() {
                     Get_Next_Token()
                     if tokens[currentToken] == "tipo_de_dato" {
                       Get_Next_Token()
+                      return true
                 }
                 else {
                     print("Se esperaba un tipo de dato")
+                    return false
                 }
             }
             else {
                 print("Se esperaba la llamada de la variable (:) ")
+                return false
             }
         }
         else {
             print("Se esperaba parentesis derecho")
+            return false
         }
     }
     else {
         print("Se esperaba Identificador")
+        return false
     }
 }
 else {
   print("Se esperaba parentesis izquierdo")
+  return false
 }
 }
 else{
   print("Se esperaba declaracion")
+  return false
 }
 }
-func Declarar_Arreglo(){
+func Declarar_Arreglo() -> Bool{
   if tokens[currentToken] == "arreglo"{
     Get_Next_Token()
       if tokens[currentToken] == "tipo_de_dato"{
@@ -229,33 +252,40 @@ func Declarar_Arreglo(){
                     Get_Next_Token()
                       if tokens[currentToken] == "corchder"{
                         Get_Next_Token()
+                        return true
                       }
                       else {
                         print ("Se esperaba un ]")
+                        return false
                       }
                     }
                     else {
                       print ("Se esperaba un digito")
+                      return false
                     }
                   }
                   else{
                     print ("Se esperaba [")
+                    return false
                   }
                 }
                 else{
                   print ("Se esperaba un Identificador")
+                  return false
                 }
               }
               else{
                 print ("Se esperaba un tipo de dato")
+                return false
               }
             }
             else{
               print ("Se esperaba la palabra args")
+              return false
             }
           }
 
-func OperMate(){
+func OperMate() -> Bool{
   if tokens[currentToken] == "inimate"{
     Get_Next_Token()
     if tokens[currentToken] == "Identificador"{
@@ -264,25 +294,30 @@ func OperMate(){
           Get_Next_Token()
             if tokens[currentToken] == "Identificador"{
               Get_Next_Token()
+              return true
             }
             else {
               print ("Se esperaba Identificador")
+              return false
             }
           }
             else {
               print ("Se esperaba un operador aritmetico")
+              return false
             }
           }
             else {
               print ("Se esperaba un Identificador")
+              return false
             }
           }
             else {
               print ("Se esperaba la palabra dm")
+              return false
             }
           }
 
- func DeclararPila(){
+ func DeclararPila() -> Bool{
       if tokens[currentToken] == "apilar"{
         Get_Next_Token()
         if tokens[currentToken] == "corchizq"{
@@ -291,25 +326,30 @@ func OperMate(){
             Get_Next_Token()
             if tokens[currentToken] == "corchder"{
               Get_Next_Token()
+              return true
                 }
                 else {
                   print ("Se esperaba un ]")
+                  return false
                 }
               }
               else {
                 print("Se esperaba un Identificador")
+                return false
               }
             }
             else{
               print("Se esperaba [")
+              return false
             }
           }
           else{
             print("Se esperaba la palabra reservada pileup")
+            return false
           }
         }
 
-func consWrt(){
+func consWrt() -> Bool{
     if tokens[currentToken] == "escribir"{
       Get_Next_Token()
       if tokens[currentToken] == "parizq"{
@@ -320,29 +360,35 @@ func consWrt(){
             Get_Next_Token()
             if tokens[currentToken] == "terminal"{
               Get_Next_Token()
+              return true
             }
             else {
               print ("Se esperaba la palabra term")
+              return false
             }
           }
           else {
             print ("Se esperaba un )")
+            return false
           }
         }
         else {
           print ("Se esperaba un Identificador")
+          return false
         }
       }
       else {
         print ("Se esperaba un (")
+        return false
       }
     }
     else {
       print ("Se esperaba la palabra writein")
+      return false
     }
   }
 
-  func consread(){
+  func consread() -> Bool{
       if tokens[currentToken] == "leer"{
         Get_Next_Token()
         if tokens[currentToken] == "parizq"{
@@ -353,72 +399,86 @@ func consWrt(){
               Get_Next_Token()
               if tokens[currentToken] == "terminal"{
                 Get_Next_Token()
+                return true
               }
               else {
                 print ("Se esperaba la palabra term")
+                return false
               }
             }
             else {
               print ("Se esperaba un )")
+              return false
             }
           }
           else {
             print ("Se esperaba un Identificador")
+            return false
           }
         }
         else {
           print ("Se esperaba un (")
+          return false
         }
       }
       else {
         print ("Se esperaba la palabra readin")
+        return false
       }
     }
 
-func DeclararTry(){
+func DeclararTry() -> Bool{
   if tokens[currentToken] == "intento"{
     Get_Next_Token()
     if tokens[currentToken] == "llavesizq"{
       Get_Next_Token()
       if tokens[currentToken] == "llavesder"{
         Get_Next_Token()
+        return true
       }
       else{
         print("Se esperaba }")
+        return false
       }
     }
       else{
         print("Se esperaba {")
+        return false
       }
     }
       else{
         print ("Se esperaba la palabra intento")
+        return false
       }
 }
 
-func DeclararCatch(){
+func DeclararCatch() -> Bool{
   if tokens[currentToken] == "capturar_excepcion" {
     Get_Next_Token()
       if tokens[currentToken] == "imperror"{
         Get_Next_Token()
           if tokens[currentToken] == "fin_excepcion"{
             Get_Next_Token()
+            return true
           }
           else{
             print("Se esperaba la palabra pass")
+            return false
           }
         }
           else{
             print("Se esperaba la palabra ImportError")
+            return false
           }
         }
           else{
             print("Se esperaba la palabra except")
+            return false
           }
         }
 
 
-func DeclararCola(){
+func DeclararCola() -> Bool{
   if tokens[currentToken] == "colas"{
     Get_Next_Token()
     if tokens[currentToken] == "corchizq"{
@@ -427,30 +487,35 @@ func DeclararCola(){
         Get_Next_Token()
           if tokens[currentToken] == "corchder"{
             Get_Next_Token()
+            return true
           }
           else {
             print ("Se esperaba un ]")
+            return false
           }
         }
         else {
           print("Se esperaba un Identificador")
+          return false
         }
       }
       else{
         print("Se esperaba [")
+        return false
       }
     }
     else{
       print("Se esperaba colas")
+      return false
     }
   }
 }
 
 var synal = Syntax(TOKENS)
-synal.Declaracion_Constante()
-synal.Declaracion_Variable()
 synal.DeclararIprograma()
+synal.Declaracion_Constante()
 synal.DeclararFprograma()
+synal.Declaracion_Variable()
 synal.DeclararCola()
 synal.consread()
 synal.consWrt()
