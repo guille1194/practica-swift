@@ -54,6 +54,8 @@ for index in 0..<count{
         for palabra in listmp {
             if palabra != " " {
                 LEXEMAS.append(palabra);
+                /**sep = sep.filter(!$0.isEmpty) //referencia a cada uno de los strings que esta adentro ($0)
+                sep2 = sep2.filter(!$0.isEmpty)**/
             }
         }
     }
@@ -73,13 +75,13 @@ for indexL in 0..<countL {
 
         if matches.count > 0 {
             TOKENS[indexL] = NOMBRES[indexP];
-            print("num Token:", indexP, "|Token: " + NOMBRES[indexP] + " |Nombre: " + String(input));
+            //print("num Token:", indexP, "|Token: " + NOMBRES[indexP] + " |Nombre: " + String(input));
             break;
         }
     }
-    if matches.count == 0{
-      print("no existe", String(input))
-    }
+    //if matches.count == 0{
+    //  print("no existe", String(input))
+    //}
   }
 
 class Syntax {
@@ -93,8 +95,6 @@ class Syntax {
   		currentToken++
   		if currentToken == self.tokens.count {
   			currentToken = 0
-        print(currentToken)
-
   		}
   	}
   func DeclararIprograma() -> Bool {
@@ -104,16 +104,6 @@ class Syntax {
     }
     else{
       print("No se localiza el inicio del programa")
-      return false
-    }
-  }
-  func DeclararFprograma() -> Bool{
-    if tokens[currentToken] == "FPrograma" {
-      Get_Next_Token()
-      return true
-    }
-    else{
-      print("No se localiza el fin del programa")
       return false
     }
   }
@@ -509,6 +499,16 @@ func DeclararCola() -> Bool{
       return false
     }
   }
+  func DeclararFprograma() -> Bool{
+    if tokens[currentToken] == "FPrograma" {
+      Get_Next_Token()
+      return true
+    }
+    else{
+      print("No se localiza el fin del programa")
+      return false
+    }
+  }
 }
 
 var synal = Syntax(TOKENS)
@@ -525,3 +525,5 @@ synal.Declararimp()
 synal.DeclararTry()
 synal.DeclararCatch()
 synal.DeclararFprograma()
+
+//cada metodo tiene que llamar al otro requerido dentro de la funcion
