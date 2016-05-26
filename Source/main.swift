@@ -1,6 +1,8 @@
 import Foundation
 import Glibc
 
+
+
 var dir = "/home/guillermo/Escritorio/";
 var archivo = "tokens.ori";
 var ruta = dir.stringByAppendingPathComponent(archivo);
@@ -35,7 +37,12 @@ guard var archivoCodigoFuente = try? String(contentsOfFile: ruta, encoding: NSUT
 	fatalError("falla al leer archivoCodigoFuente desde el archivo")
 }
 
-let sep = ["{","}","[","]","(",")","+","-","/","*","=","<",">","%","^","!","'","|","~","?","&",":","\\s","\\t"]
+let separadores = NSCharacterSet(charactersInString: "\n")
+
+var fileArray = archivoCodigoFuente.componentsSeparatedByCharactersInSet(separadores)
+let nonempty = fileArray.filter { (x) -> Bool in !x.isEmpty}
+
+/**let sep = ["{","}","[","]","(",")","+","-","/","*","=","<",">","%","^","!","|","~","?","&",":","\\s","\\t"]
 let sep2 = [" =  = "," <  = "," =  > "," !  = "," <  > "," '  ' "," &  & ", " (  ) "," {  } "," [  ] "]
 for s in sep{
   archivoCodigoFuente = archivoCodigoFuente.stringByReplacingOccurrencesOfString(s, withString: " \(s) ", options: NSStringCompareOptions.LiteralSearch, range: nil)
@@ -43,7 +50,7 @@ for s in sep{
 for s in sep2{
   let a1=String(s.characters[s.startIndex.advancedBy(1)]) + String(s.characters[s.startIndex.advancedBy(4)])
   archivoCodigoFuente = archivoCodigoFuente.stringByReplacingOccurrencesOfString(s, withString: " \(a1) ", options: NSStringCompareOptions.LiteralSearch, range: nil)
-}
+}**/
 
 var lineasArchivoCodigoFuente:[String] = archivoCodigoFuente.componentsSeparatedByString("\n");
 
@@ -499,6 +506,92 @@ func DeclararCola() -> Bool{
       return false
     }
   }
+/**  func CicloForeach() -> Bool {
+    if tokens[currentToken] == "ciclo" {
+      Get_Next_Token()
+      if tokens[currentToken] == "Identificador"{
+        Get_Next_Token()
+        if tokens[currentToken] == "foreach"{
+          Get_Next_Token()
+          if tokens[currentToken] == "llavesizq"{
+            Get_Next_Token()
+
+  }
+**/
+  func DeclararLib() -> Bool {
+    if tokens[currentToken] == "IPrograma"{
+      Get_Next_Token()
+      if tokens[currentToken] == "libreria"{
+        Get_Next_Token()
+        if tokens[currentToken] == "Identificador"{
+          Get_Next_Token()
+          return true
+        }
+      else{
+        print("Se esperaba Identificador")
+        return false
+      }
+    }
+    else{
+      print("Se esperaba la palabra lib")
+      return false
+    }
+  }
+  else{
+    print("No se encuentra i@")
+    return false
+  }
+}
+
+func DeclararLista() -> Bool{
+  if tokens[currentToken] == "lista"{
+    Get_Next_Token()
+    if tokens[currentToken] == "tipo_de_dato"{
+      Get_Next_Token()
+      if tokens[currentToken] == "Identificador"{
+        Get_Next_Token()
+        return true
+      }
+      else{
+        print("Se esperaba un Identificador")
+        return false
+      }
+    }
+    else{
+      print("Se esperaba tipo de dato")
+      return false
+    }
+  }
+  else{
+    print("Se esperaba la palabra table")
+    return false
+  }
+}
+func DeclararConvert() -> Bool{
+  if tokens[currentToken] == "conversiones"{
+    Get_Next_Token()
+    if tokens[currentToken] == "Identificador"{
+      Get_Next_Token()
+      if tokens[currentToken] == "convertidor"{
+        Get_Next_Token()
+        return true
+      }
+      else{
+        print("Se esperaba la palabra converse")
+        return false
+      }
+    }
+    else{
+      print("Se esperaba un Identificador")
+      return false
+    }
+  }
+  else{
+    print("Se esperaba un tipo de conversion")
+    return false
+  }
+}
+
   func DeclararFprograma() -> Bool{
     if tokens[currentToken] == "FPrograma" {
       Get_Next_Token()
@@ -512,18 +605,21 @@ func DeclararCola() -> Bool{
 }
 
 var synal = Syntax(TOKENS)
-synal.DeclararIprograma()
-synal.Declaracion_Constante()
-synal.Declaracion_Variable()
-synal.DeclararCola()
-synal.consread()
-synal.consWrt()
-synal.DeclararPila()
-synal.OperMate()
-synal.Declarar_Arreglo()
-synal.Declararimp()
-synal.DeclararTry()
-synal.DeclararCatch()
-synal.DeclararFprograma()
+synal.DeclararIprograma() //1
+synal.DeclararLib() //2
+synal.Declaracion_Constante() //3
+synal.Declaracion_Variable() //4
+synal.DeclararCola() //5
+synal.consread() //6
+synal.consWrt() //7
+synal.DeclararPila() //8
+synal.OperMate() //9
+synal.Declarar_Arreglo() //10
+synal.Declararimp() //11
+synal.DeclararTry() //12
+synal.DeclararCatch() //13
+synal.DeclararLista()//14
+synal.DeclararFprograma() //15
+
 
 //cada metodo tiene que llamar al otro requerido dentro de la funcion
