@@ -98,11 +98,13 @@ class Syntax {
   		self.tokens = tokens
   		currentToken = 0
   	}
-    func Get_Next_Token(){
+    func Get_Next_Token() -> Bool {
   		currentToken++
   		if currentToken == self.tokens.count {
   			currentToken = 0
+        return true
   		}
+      return false
   	}
   func DeclararIprograma() -> Bool {
     if tokens[currentToken] == "IPrograma" {
